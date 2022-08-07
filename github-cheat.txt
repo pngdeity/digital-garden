@@ -1,0 +1,68 @@
+﻿Steps to initialize a git repo for a new project
+        Create a new directory in your file system
+        Enter your new directory
+        Create a new git repository with git init
+        Optionally rename the initially created branch from the default master to main
+            using git branch -m <new-name>
+        Ensure nothing went wrong with git status
+
+Steps to setup a remote tracking branch on GitHub for an existing repo
+        On GitHub, create a new repository, without adding a README, .gitignore, license, etc.
+        On the command line, ensure you have a local git repo (see above)
+        Enter your git repo's working directory
+        git remote add origin <remote-repo-url>
+            For GitHub, this will be something like https://github.com/<your username>/<your repo name>.git)
+        To verify you did it right, git remote -v
+        git push origin master
+        On GitHub look for your local changes 
+
+Steps to initialize a local working environment from a remote GitHub repo
+        Switch to the directory that will be the parent of your GitHub repo i.e. don't create a new directory
+        Run 'git clone <the remote repo's url>
+        Ensure that it initialized correctly with 'git remove -v'
+
+Salient vocabulary
+snapshot                    *definition goes here*
+index       the staging area for files that have been edited but have not yet been committed
+check out       to switch to another branch
+
+Salient commands
+git add <file file1 etc>                        add the changes to enumerated files to the index
+git branch <branch>                                creates a new local branch
+git branch -d <branch>                                safely deletes a local branch, will complain if there are uncommitted changes
+git branch -D <branch>
+git branch --list                                       show local branches, synonymous with the command with arguments
+git branch -v                                        show more info about local branches
+git branch -vv                                        show the most info about local branches
+git branch --no-merged                                show branches not merged into current branch
+git branch --no-merged <branch>                        show branches not merged into specified branch
+git checkout                                        gives list of modified & not commited files
+git checkout <branch>                                switch to named, existing local branch, if none exist but a remote branch with the same name exists, then the new branch will automatically track the remote branch of the same name
+git checkout -b <branch>                        create & switch to named local branch
+git checkout --track <remote>/<branch>                switch to a tracking local branch at <remote>/<branch>
+git checkout -b <branch> <remote>/<branch>         same as git checkout --track <remote>/<branch> but with the option to name your local branch differently from the remote
+git clone -o <name> <url>                        clone repo <url> but refer to it as <name>, default name is "origin", hence -o
+git config --global credential.helper cache        cache username & password for a specified amount of time, stored in plaintext in ~/.git_config
+git diff                                        show changes to files that are not staged for commit i.e. changes not in the index?
+git diff --cached                               show changes to files that are staged for commit i.e. changes in the index
+git fetch <remote>                                updates references from remote server known as <remote>
+git fetch --all                                        updates all reference for all remotes
+git log                                                show a commit log
+git log --graph --oneline                        show a handy, terse, graph of commits
+git merge <branch>                                merge committed changes on <branch> into remote configured branch
+git merge --abort                                abort the current merge, used when there are merge conflicts
+git merge --continue                                after fixing merge conflicts, run this
+git pull                                        git fetch followed by git merge, for the current branch
+git push <remote> <branch>                        replace remote refs with local refs of <branch> on server <remote>
+git push <remote> <branch0>:<branch1>                replace remote refs on server <remote> of remote  branch <branch1> with local refs of local branch <branch0> 
+git push <remote> --delete <branch>                delete remote branch on server <remote>
+git remote -v                                        show remotes and their respective URLs        
+git remote show <remote>                        show handy info about named remote
+git remote add <name> <url>                        add a remote server named <name> at URL <url>, imagine you forked a project & are also a contributor to it...
+git stash                                        Create a temporary "save point" for non-commit-worthy work in a branch, used before switching to another branch perhaps
+git stash apply                                        Restore the top of the stash stack on your branch
+git stash drop                                        Delete the most recent stash from the stash stack
+git stash list                                        List all saved stashes
+git stash pop                                        Apply and then remove the stash at the top of stash stack
+git status                                        show added,committed working files
+git help <command>                              Show the man page for <command>

@@ -1,0 +1,32 @@
+JQ (JSON Query) is a command line tool for operating on files formatted in the JavaScript Object Notation, or JSON.
+
+It is analogous to sed (the Stream EDitor) in which it is a domain specific language used for processing text.
+
+jq can take input from a local file or it can have a JSON file piped into it from, for example, an API call.
+
+Its more basic operation is 'prettify' whereby it will take a JSON file and display it with visually pleasing indentation, line breaks, etc. This operation does not change the formatting of the JSON file itself.
+For example, 
+nathan@desktop4260$ jq '.' my-json.json
+<pretty output>
+
+To access the fields of JSON array, we can use the access operator (a period .) and the name of the attribute to access. For example:
+nathan@desktop4260$ jq '.name' my-json.json
+will return all the values of the field labeled name in the JSON file.
+
+Similarly, if there is an attribute that is nested within an object in a JSON file, the accessing operators can be nested. So for example:
+nathan@desktop4260$ jq '.[1].name' my-json.json
+will yield the value of the key field in the array object at index 1. This example also illustrates another frequent accessing method, the two brackets [].
+
+Finally, the pipe symbole can be used within jq with special built-in functions of jq. For example,
+nathan@desktop4260$ jq '.[1] | keys' my-json.json
+will yield all of the keys that are used in the object at index one of the JSON file, formatted as an array
+
+The pipe symbol works similarly to the pipe symbol in BASH. Consider the following example
+nathan@desktop4260$ jq '.[] | keys' my-json.json
+
+A more complicated example:
+nathan@desktop4260$ jq -r '.[] | select(.name | test("github"; "i"))' my-bitwarden.json
+This will return the object from the JSON array in my-bitwarden.json, only if the name field of the object matches in a case insenstive manner the name field with "github". Also, the -r flag with make jq output raw output i.e. without quotes or new lines
+
+
+JSON files are definitionally arrays (often but not always associative arrays). To access a member of a JSON a

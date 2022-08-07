@@ -1,0 +1,59 @@
+# CMUS - THE C MUSIC PLAYER #
+TODO:
+How to the get currently playing playlist name in the status bar?
+
+Keyboard shortcuts (bound to commands):
+c       pause a playing track
+v       stop a playing track
+x       start an already playing track from the beginning or resume a paused track
+ctrl-r  toggle repeat the currently playing track
+s       toggle shuffle -> you can tell if it is on based on the lower right hand corner
+m       toggle aaa mode i.e. all, artist, or album -> see lower right hand corner
+b       next track
+U       update cmus cache (for when adding or removing music)
+E       add current track (or artist or album) to the top of the queue
+e       add current track (or artist or album) to the end of the queue
+D       remove highlighted track from queue (from the queue screen)
+
+Commands (unbounded with default configuration):
+add <directory>     add directory to cmus library
+
+## PLAYLISTS ##
+cmus, being a *modern* music player, supports the creation and curation of playlists. On first startup, there is only one playlist, default. To start, let's go to the playlist view aka view three.
+
+Note the difference between selecting (as denoted by an asterisk next to the playlist name) and highlighting (as denoted by a colored bar over the track or playlist name).
+
+For a visual playlist experience:
+Go to the playlist view with the 3 keyboard shortcut.
+We have playlist names on the left pane and the tracks for the playlist on the right pane.
+To create a new playlist, fire off the command :pl-create <my-playlist-name>
+All commands apply equally to existing and the newly created playlist.
+If you want to edit an existing playlist, highlight it with the spacebar.
+The playlist should now have an asterisk to the left of its name.
+To add to a playlist, let's head back to album/artist view aka view 1. 
+Highlight a {track|album|artist}, and press the y key to add it to our playlist.
+This functionality also works on view 3 for tracks inside other playlists or whole other playlists.
+To move tracks around inside a playlist, use p and P to move the track down and up in the playlist, respectively.
+If you want to delete a track, use D (shift-d) while the track is highlighted in the playlist view. Similarly, to delete the playlist itself, highlight it (not necessarily have the asterisk) on the playlist and use D (shift-d). Or, to nuke all the content of a playlist, open the playlist in the playlist view and place the highlight on one of the tracks in the playlist. Then use the command clear -p. Note that the playlist need not be selected (denoted by an asterisk) to be cleared. It just needs to be highlighted.
+When operating on tracks in a playlist, use the space bar to select multiple track to be operated on simultaneously. Currently, there is no way to add multiple tracks from the album/artist view (view 1) to a playlist that are not already grouped by artist or album.
+If you want to delete a playlist or a track, select it in the playlist view and press shift-d. When deleting a playlist, cmus will ask for confirmation, while deleting a track happens without confirmation.
+
+Alternatively:
+Edit the playlist file in ~/.config/cmus/playlists/<playlist-name>
+Make sure you use the absolute file path
+Not sure how these files are structured.
+
+Do note that, unlike Spotify, cmus will not warn you if you add a track to playlist that is already present in the playlist.
+
+All playlist related keyboard shortcuts:
+y       add selected {track|album|artist} to highlighted playlist
+p       move highlighted track down in playlist
+P       move highlighted track up in playlist
+D       delete highlighted {track|playlist} 
+
+All playlist related commands (unbounded with default configuration):
+pl-create <my-playlist-name>
+pl-rename <my-new-name>
+clear -p
+add -p <input>      where <input> is a file path to a file or directory. So, you can add tracks, albums, or artists, but only one at a time
+

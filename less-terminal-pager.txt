@@ -1,0 +1,4 @@
+Based on more, but can open files faster because it need not have the whole file loaded before displaying informatin.
+
+j,k     move down or up respectively
+z       go down one page

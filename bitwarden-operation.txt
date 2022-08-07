@@ -1,0 +1,5 @@
+echo -n test | xclip -selection c
+
+jq '.[] | select(.name | test("github"; "i")) | .login.password' fun-with-jq.json 
+
+bw list items | jq -r '.[] | select(.name | test("github"; "i")) | .login.password' | xclip -selection c
