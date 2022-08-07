@@ -11,7 +11,9 @@ Steps to setup a remote tracking branch on GitHub for an existing repo
         On the command line, ensure you have a local git repo (see above)
         Enter your git repo's working directory
         git remote add origin <remote-repo-url>
-            For GitHub, this will be something like https://github.com/<your username>/<your repo name>.git)
+            For GitHub, this will be something like the following:
+                Https:  https://github.com/<your username>/<your repo name>.git)
+                SSH:    git@github.com:<your username>/<your repo name>.git
         To verify you did it right, git remote -v
         git push origin master
         On GitHub look for your local changes 
