@@ -1,0 +1,55 @@
+Tmux is a terminal multiplexer.
+
+Tmux creates sessions
+And sessions are composed of windows
+And windows are composed of panes (these each get a pseudo-terminal)
+
+all of which may take up some of your screen
+
+For a live tmux environment,
+start it up with a simple tmux command. 
+Without any arguments, it should create a new session.
+If there is an already runnning tmux session (as evidenced by a socket file
+in /tmp), you can attach to that session using tmux attach. TBD how to attach
+to a predefined session as defined in the tmux config file, whether
+/etc/tmux.conf or ~/.tmux.conf
+
+Some pertinent live tmux commands:
+NOTE: These are defaults and I have no reason to believe they are or are not
+sane defaults.
+
+The control key combo (aka prefix keys) is ctrl-b (either ctrl has been tested and confirmed to work)
+
+For windows indexing, the indexes need not start at zero, and they need not be
+contiguous. 
+
+Keep in mind this: if you intend to use tmux as a replacement for i3 as you
+currently use it, your feature set must be very small.
+i3 to tmux translation table:
+Move a window to another workspace
+Go to another workspace
+Switch the focus between programs within the same workspace
+
+i3 operation				tmux operation
+Full screen (one-way)		!	Pop-out current pane into new window
+Move window to new workspace	.	Prompt for index to move current
+window
+Restart X server		r	Force redraw of attached client
+
+What's with the status bar?
+[session name] 1:window-name-index-one 3:active-window* 4:window-index-four
+
+Create a new workspace 
+
+Moving around:
+0 through 9	Select the window indexed one through nine, given it already
+exists
+;		Move to the previously selected pane
+.		Prompt for a destination index to move the current window
+o		Select the next pane in the current window
+
+Life and death:
+%		Split the current pane in twain, left and right
+"		Split the current pane in twain, top and bottom
+x		Kill the current pane
+&		Kill the current window (easier than typing exit)
