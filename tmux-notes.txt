@@ -14,7 +14,7 @@ Without any arguments, it should create a new session.
 If there is an already runnning tmux session (as evidenced by a socket file
 in /tmp), you can attach to that session using tmux attach. TBD how to attach
 to a predefined session as defined in the tmux config file, whether
-/etc/tmux.conf or ~/.tmux.conf
+/etc/tmux.conf or ~/.tmux.conf or $XDG_CONFIG_HOME/.config/tmux/tmux.conf
 
 Some pertinent live tmux commands:
 NOTE: These are defaults and I have no reason to believe they are or are not
@@ -43,10 +43,12 @@ What's with the status bar?
 
 Create a new workspace 
 
-Moving around:
+Moving the focus:
 0 through 9	Select the window indexed one through nine, given it already
 exists
 ;		Move to the previously selected pane
+
+Acting on the focus:
 .		Prompt for a destination index to move the current window
 o		Select the next pane in the current window
 
