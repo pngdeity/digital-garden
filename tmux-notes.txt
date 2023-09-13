@@ -1,5 +1,7 @@
 Tmux is a terminal multiplexer.
 
+It allows multiple pseudo-terminals in your single terminal session, in a not-quite-but-close parallel of the desktop metaphor.
+
 Tmux creates sessions
 And sessions are composed of windows
 And windows are composed of panes (these each get a pseudo-terminal)
